@@ -1,15 +1,69 @@
 body {
-    background-color: black;
-    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    font-family: 'Arial', sans-serif;
 }
-.form-control{
-    margin-top: 20px;
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
 }
-.btn{
-    margin-top: 20px;
+
+.card-title {
+    color: #4a4a4a;
+    font-weight: bold;
 }
-#bmi1,#bmi{
-    margin-top: 20px;
-    box-shadow: 0 0 10px;
-    
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
 }
+
+.form-control:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 0.2rem rgba(118, 75, 162, 0.25);
+}
+
+.btn-primary {
+    background-color: #764ba2;
+    border-color: #764ba2;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #5a3b7e;
+    border-color: #5a3b7e;
+    box-shadow: 0 5px 15px rgba(90, 59, 126, 0.4);
+}
+
+#result {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#bmi-value {
+    color: #764ba2;
+    font-weight: bold;
+}
+
+#bmi-category {
+    font-weight: bold;
+}
+
+#bmi-interpretation {
+    font-size: 0.9rem;
+}
+
+.underweight { color: #17a2b8; }
+.normal { color: #28a745; }
+.overweight { color: #ffc107; }
+.obese { color: #dc3545; }
