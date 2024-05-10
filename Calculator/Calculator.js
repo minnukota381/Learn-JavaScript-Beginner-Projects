@@ -1,82 +1,162 @@
-let expression = '';
+let displayValue = '0';
+let memory = 0;
+let lastOperation = '';
+let lastNumber = '';
+let isNewCalculation = true;
 
-function inputNum(num) {
-  let display = document.getElementById("number");
-  display.value += num;
+const display = document.getElementById('display');
+
+function updateDisplay() {
+    display.value = displayValue;
 }
 
-function clearscr() {
-  document.getElementById("number").value = "";
-  expression = '';
+function appendNumber(num) {
+    if (isNewCalculation || displayValue === '0' || displayValue === 'Error') {
+        displayValue = num.toString();
+        isNewCalculation = false;
+    } else {
+        displayValue += num;
+    }
+    updateDisplay();
 }
 
-function operator1(op) {
-  let display = document.getElementById("number");
-  expression += display.value + op;
-  display.value = '';
+function appendDecimal() {
+    if (!displayValue.includes('.')) {
+        displayValue += '.';
+        updateDisplay();
+    }
 }
 
-function calc() {
-  let display = document.getElementById("number");
-  expression += display.value;
-  let result = eval(expression);
-  display.value = result;
-  expression = '';
+function appendOperator(op) {
+    if (lastOperation && lastNumber && !isNewCalculation) {
+        calculate();
+    }
+    lastOperation = op;
+    lastNumber = displayValue;
+    isNewCalculation = true;
 }
 
-function inputDecimal() {
-  let display = document.getElementById("number");
-  if (!display.value.includes('.')) {
-    display.value += '.';
-  }
-}
-
-function percentCalc() {
-  let display = document.getElementById("number");
-  let value = parseFloat(display.value);
-  let result = value / 100;
-  display.value = result;
-}
-
-function sqrt() {
-  let display = document.getElementById("number");
-  let value = parseFloat(display.value);
-  let result = Math.sqrt(value);
-  display.value = result;
-}
-
-function changeSign() {
-  let display = document.getElementById("number");
-  let value = parseFloat(display.value);
-  let result = -value;
-  display.value = result;
+function clearDisplay() {
+    displayValue = '0';
+    lastOperation = '';
+    lastNumber = '';
+    isNewCalculation = true;
+    updateDisplay();
 }
 
 function backspace() {
-  let display = document.getElementById("number");
-  let value = display.value;
-  display.value = value.slice(0, -1);
+    if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1);
+    } else {
+        displayValue = '0';
+    }
+    updateDisplay();
 }
 
-let memory = 0;
+function changeSign() {
+    displayValue = (parseFloat(displayValue) * -1).toString();
+    updateDisplay();
+}
+
+function calculate() {
+    if (lastOperation && lastNumber) {
+        let result;
+        const num1 = parseFloat(lastNumber);
+        const num2 = parseFloat(displayValue);
+        
+        switch (lastOperation) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                } else {
+                    result = 'Error';
+                }
+                break;
+            case '%':
+                result = num1 % num2;
+                break;
+        }
+        
+        displayValue = result.toString();
+        lastOperation = '';
+        lastNumber = '';
+        isNewCalculation = true;
+        updateDisplay();
+    }
+}
 
 function memoryAdd() {
-  let display = document.getElementById("number");
-  let value = parseFloat(display.value);
-  memory += value;
+    memory += parseFloat(displayValue);
+    isNewCalculation = true;
 }
 
 function memorySubtract() {
-  let display = document.getElementById("number");
-  let value = parseFloat(display.value);
-  memory -= value;
+    memory -= parseFloat(displayValue);
+    isNewCalculation = true;
 }
 
 function memoryRecall() {
-  let display = document.getElementById("number");
-  display.value = memory;
+    displayValue = memory.toString();
+    updateDisplay();
+    isNewCalculation = true;
 }
 
 function memoryClear() {
-  memory = 0;
+    memory = 0;
+    isNewCalculation = true;
 }
+
+updateDisplay();
+
+// Event Listeners
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const buttonText = e.target.textContent;
+        
+        if (!isNaN(buttonText) || buttonText === '.') {
+            if (buttonText === '.') {
+                appendDecimal();
+            } else {
+                appendNumber(buttonText);
+            }
+        } else {
+            switch (buttonText) {
+                case 'C':
+                    clearDisplay();
+                    break;
+                case '⌫':
+                    backspace();
+                    break;
+                case '+/-':
+                    changeSign();
+                    break;
+                case '=':
+                    calculate();
+                    break;
+                case 'MC':
+                    memoryClear();
+                    break;
+                case 'MR':
+                    memoryRecall();
+                    break;
+                case 'M+':
+                    memoryAdd();
+                    break;
+                case 'M-':
+                    memorySubtract();
+                    break;
+                default:
+                    appendOperator(buttonText);
+            }
+        }
+    });
+});
