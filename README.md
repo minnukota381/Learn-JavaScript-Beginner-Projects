@@ -2,18 +2,6 @@
 
 Welcome to the Learn JavaScript Beginner Projects repository! This repository contains a collection of beginner-friendly JavaScript projects designed to help you practice and improve your JavaScript skills.
 
-## Table of Contents
-
-Introduction
-Projects
-Installation
-Usage
-Contributing
-License
-Contact
-Introduction
-This repository is a curated collection of simple JavaScript projects, ideal for beginners. Each project is designed to cover fundamental concepts and techniques in JavaScript, making it a perfect resource for anyone starting their journey in web development.
-
 ## Projects
 
 Here is a list of the projects included in this repository:
