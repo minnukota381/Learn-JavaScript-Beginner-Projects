@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Functions</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="text-center">JavaScript Functions</h1>
+  <h2 class="text-center">setInterval() with a Callback</h2>
+
+  <p class="text-center">Using setInterval() to display the time every second (1000 milliseconds).</p>
+
+  <h1 id="demo" class="text-center"></h1>
+</div>
+
+<!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    d=new Date();
+    setInterval(TimerF, 1000);
+
+    function TimerF(){
+        d=new Date();
+        document.getElementById("demo").innerHTML= 'Current Time: ' + d.getHours()
+            + ':' + d.getMinutes() + ':' + d.getSeconds();
+    }
+</script>
+
+</body>
+</html>

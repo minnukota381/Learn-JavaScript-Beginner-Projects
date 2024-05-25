@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>GitHub User Search</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">GitHub User Search</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="usernameInput" class="form-control" placeholder="Enter GitHub username" aria-label="GitHub username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="searchUser()" id="button-addon2">Search</button>
+            </div>
+        </div>
+        <div id="userInfo"></div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-JT0swrLPJtr/GWMS2FquDn/ehZi2lnNQA6zko2brz1Jxpb7Rt8kZu+BvPzejZf6e" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-Mp4F/XcyM56Cp2uHfKTt6vLEom5+QSm6PFkLvoLrjgjzIupd7h+2GgqKkTXIcgRq" crossorigin="anonymous"></script>
+    <script>
+        function searchUser() {
+            var username = document.getElementById('usernameInput').value;
+            fetch(`https://api.github.com/users/${username}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('User not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('userInfo').innerHTML = `
+                        <p>Username: ${data.login}</p>
+                        <p>Avatar: <img src="${data.avatar_url}" alt="Avatar"></p>
+                        <p>Bio: ${data.bio}</p>
+                        <p>Location: ${data.location}</p>
+                        <p>Name: ${data.name}</p>
+                        <p>Followers: ${data.followers}</p>
+                        <p>Public Repositories: ${data.public_repos}</p>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('userInfo').textContent = error.message;
+                });
+        }
+    </script>
+</body>
+</html>

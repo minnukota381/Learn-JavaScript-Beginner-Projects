@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      margin-top: 50px;
+    }
+    .container {
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">To-Do List</h1>
+    <form id="todo-form">
+      <div class="form-group">
+        <input type="text" class="form-control" id="todo-input" placeholder="Add a new task">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+    <ul class="list-group mt-3" id="todo-list">
+      <!-- Tasks will be inserted here dynamically -->
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to display tasks from local storage
+    function displayTasks() {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const todoList = document.getElementById('todo-list');
+      todoList.innerHTML = '';
+
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `
+          ${task.text} <span class="badge badge-secondary">${task.time}</span>
+          <button class="btn btn-danger btn-sm float-right delete-btn">Delete</button>
+        `;
+        todoList.appendChild(li);
+      });
+    }
+
+    // Function to add a new task
+    function addTask(text) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const time = new Date().toLocaleString();
+      tasks.push({ text, time });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      displayTasks();
+    }
+
+    // Function to delete a task
+    function deleteTask(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      displayTasks();
+    }
+
+    // Event listener for form submission
+    document.getElementById('todo-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const todoInput = document.getElementById('todo-input');
+      const text = todoInput.value.trim();
+      if (text !== '') {
+        addTask(text);
+        todoInput.value = '';
+      }
+    });
+
+    // Event delegation for delete button click
+    document.getElementById('todo-list').addEventListener('click', function(event) {
+      if (event.target.classList.contains('delete-btn')) {
+        const index = Array.from(event.target.parentNode.parentNode.children).indexOf(event.target.parentNode);
+        deleteTask(index);
+      }
+    });
+
+    // Initial display of tasks when page loads
+    displayTasks();
+  </script>
+</body>
+</html>
