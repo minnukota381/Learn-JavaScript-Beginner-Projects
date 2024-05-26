@@ -6,5 +6,4 @@ icon.addEventListener(('click'),() =>{
     }else{
         icon.src="moon.png"
     }
-
 })

@@ -10,7 +10,7 @@ function clearscr(){
 }
 
 function operator1(x){
-    var expression=document.getElementById("number");
+    let expression=document.getElementById("number");
     expression.value+=x
 }
 

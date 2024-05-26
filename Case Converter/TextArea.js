@@ -8,4 +8,3 @@ function UpperCase(){
     var LowerCaseText=TextInput.toLowerCase();
     document.getElementById("output").innerHTML=LowerCaseText;
   }
-</script
