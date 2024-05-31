@@ -1,5 +1,5 @@
 let textButton = document.querySelector("#text-button");
-textButton.addEventListener('click', function() {
+textButton.addEventListener('click',() => {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'data.txt', true);
     xhr.onload =() => {
