@@ -63,3 +63,43 @@ let displayAPIData = (APIData) => {
     html += '</ul>';
     document.querySelector("#API").innerHTML = html;
 };
+
+let mytextButton = document.querySelector("#text2-button");
+mytextButton.addEventListener('click', () =>{
+    let xhr =  new XMLHttpRequest();
+    xhr.open('GET', 'data2.txt', true);
+    xhr.onload = () => {
+        if (xhr.status === 200) {
+            let info = xhr.responseText;
+            document.getElementById("text2").innerText = info;
+        } else {
+            alert('Error: ' + xhr.status);
+        }
+    }
+    xhr.send();
+});
+
+let myJSONButton = document.querySelector("#json2-button");
+myJSONButton.addEventListener('click', () => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'JSON2.json',true);
+    xhr.onload = () =>{
+        if(xhr.status === 200){
+            let JSONinfo = JSON.parse(xhr.responseText);
+            console.log(JSONinfo);
+            displayJSONData(JSONinfo);
+        } else{
+            alert('Error: ' + xhr.status);
+        }
+    }
+    xhr.send();
+});
+
+let dispJSON = (jsoninfo) => {
+    let html = '<ul>';
+    jsoninfo.forEach(item => {
+        html += `<li>${item.name}: ${item.RegNo}</li>`;
+    });
+    html += '</ul>';
+    document.querySelector("#JSON2").innerHTML = html;
+} 
