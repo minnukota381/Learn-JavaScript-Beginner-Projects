@@ -87,7 +87,7 @@ myJSONButton.addEventListener('click', () => {
         if(xhr.status === 200){
             let JSONinfo = JSON.parse(xhr.responseText);
             console.log(JSONinfo);
-            displayJSONData(JSONinfo);
+            dispJSON(JSONinfo);
         } else{
             alert('Error: ' + xhr.status);
         }
@@ -103,3 +103,32 @@ let dispJSON = (jsoninfo) => {
     html += '</ul>';
     document.querySelector("#JSON2").innerHTML = html;
 } 
+
+let myAPIButton = document.querySelector("#api2-button");
+myAPIButton.addEventListener('click', () => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1', 'true');
+    xhr.onload = () =>{
+        if(xhr.status === 200){
+            let APIinfo = JSON.parse(xhr.responseText);
+            dispAPI(APIinfo);
+            console.log(APIinfo);
+        } else {
+            alert('Error: ' + xhr.status);
+        }
+    }
+    xhr.send();
+})
+
+let dispAPI = (APIinfo) => {
+    let html = '<ul class="list-group mt-1">';
+    if (Array.isArray(APIinfo)) {
+        APIinfo.forEach(item => {
+            html += `<li class="list-group-item">${item.title}</li>`;
+        });
+    } else {
+        html += `<li class="list-group-item">${APIinfo.title}</li>`;
+    }
+    html += '</ul>';
+    document.querySelector("#API2").innerHTML = html;
+};
