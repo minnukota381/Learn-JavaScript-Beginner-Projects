@@ -32,10 +32,12 @@ Here is a list of the projects included in this repository:
 ## Installation
 
 To get started with these projects, you can clone this repository to your local machine:
-```
+
+```bash
 git clone https://github.com/minnukota381/Learn-JavaScript-Beginner-Projects.git
 ```
-```
+
+```bash
 cd Learn-JavaScript-Beginner-Projects
 ```
 
