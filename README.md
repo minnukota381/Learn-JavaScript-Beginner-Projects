@@ -26,6 +26,8 @@ Here is a list of the projects included in this repository:
 18. Set Timer
 19. Tic Tac Toe
 20. To-Do List
+21. Disable Copy Paste
+22. Rock Paper Scissor
 
 ## Installation
 
