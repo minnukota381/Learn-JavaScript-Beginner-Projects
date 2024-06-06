@@ -1,4 +1,4 @@
-d=new Date();
+let d=new Date();
 setInterval(TimerF, 1000);
 
 function TimerF(){
