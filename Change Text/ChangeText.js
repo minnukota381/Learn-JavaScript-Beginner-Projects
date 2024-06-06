@@ -1,8 +1,8 @@
 function ChangeText() {
     let x = document.getElementById("text");
-    if (x.textContent === "Mr. Minnu") {
-        x.textContent = "Mrs. Minnu";
+    if (x.textContent === "Welcome") {
+        x.textContent = "How are you today?";
     } else {
-        x.textContent = "Mr. Minnu";
+        x.textContent = "Welcome";
     }
 }
