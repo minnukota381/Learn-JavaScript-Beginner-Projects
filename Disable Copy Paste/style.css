@@ -16,6 +16,10 @@
     padding: 30px;
 }
 
+textarea{
+    height: 300px;
+}
+
 .text-danger {
     color: #dc3545;
 }
