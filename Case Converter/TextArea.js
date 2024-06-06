@@ -1,10 +1,10 @@
 function UpperCase(){
-    var TextInput=document.getElementById("text").value;
-    var UpperCaseText=TextInput.toUpperCase();
+    let TextInput=document.getElementById("text").value;
+    let UpperCaseText=TextInput.toUpperCase();
     document.getElementById("output").innerHTML=UpperCaseText;
   }
   function LowerCase(){
-    var TextInput=document.getElementById("text").value;
-    var LowerCaseText=TextInput.toLowerCase();
+    let TextInput=document.getElementById("text").value;
+    let LowerCaseText=TextInput.toLowerCase();
     document.getElementById("output").innerHTML=LowerCaseText;
   }
