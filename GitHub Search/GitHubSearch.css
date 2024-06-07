@@ -1,0 +1,13 @@
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgb(144, 144, 144);
+}
+#userInfo {
+    margin-top: 20px;
+}
