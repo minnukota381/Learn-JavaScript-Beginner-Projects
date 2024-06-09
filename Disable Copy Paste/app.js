@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
     });
 
+    document.querySelector('.right-').addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
     document.querySelector('.left').addEventListener('keydown', function(e) {
         if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a')) {
             e.preventDefault();
