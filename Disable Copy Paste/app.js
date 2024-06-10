@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// var allowPaste = function(e){
+// let allowPaste = function(e){
 //     e.stopImmediatePropagation();
 //     return true;
 //   };
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // }, true);
   
 //   (function() {
-//     var css = '.left { user-select: auto !important; -webkit-user-select: auto !important; -moz-user-select: auto !important; -ms-user-select: auto !important; }',
+//     let css = '.left { user-select: auto !important; -webkit-user-select: auto !important; -moz-user-select: auto !important; -ms-user-select: auto !important; }',
 //         head = document.head || document.getElementsByTagName('head')[0],
 //         style = document.createElement('style');
   
