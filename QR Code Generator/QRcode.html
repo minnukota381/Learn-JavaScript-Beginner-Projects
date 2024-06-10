@@ -4,25 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR CODE</title>
-    <style>
-
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
       <input type="text" class="input" placeholder="Enter text or URL">
       <div id="box">
-        <img src="" id="QRimg">
+        <img src="" id="QRimg" alt="QR">
       </div>
       <button onclick="GenerateQR()">Generate QR code</button>
     </div>
-    <script>
-        let input = document.querySelector("input");
-        let QRimg = document.querySelector("#QRimg");
-
-        function GenerateQR(){
-            QRimg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + input.value;
-        }
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
