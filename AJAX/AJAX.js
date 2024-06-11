@@ -1,7 +1,7 @@
 let textButton = document.querySelector("#text-button");
 textButton.addEventListener('click',() => {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'data.txt', true);
+    xhr.open('GET', './Assets/data.txt', true);
     xhr.onload =() => {
         if (xhr.status === 200) {
             let data = xhr.responseText
@@ -17,7 +17,7 @@ textButton.addEventListener('click',() => {
 let JSONButton = document.querySelector('#JSON-button');
 JSONButton.addEventListener('click', () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'JSONData.json', true);
+    xhr.open('GET', './Assets/JSONData.json', true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             let JSONData = JSON.parse(xhr.responseText);
@@ -67,7 +67,7 @@ let displayAPIData = (APIData) => {
 let mytextButton = document.querySelector("#text2-button");
 mytextButton.addEventListener('click', () =>{
     let xhr =  new XMLHttpRequest();
-    xhr.open('GET', 'data2.txt', true);
+    xhr.open('GET', './Assets/data2.txt', true);
     xhr.onload = () => {
         if (xhr.status === 200) {
             let info = xhr.responseText;
@@ -82,7 +82,7 @@ mytextButton.addEventListener('click', () =>{
 let myJSONButton = document.querySelector("#json2-button");
 myJSONButton.addEventListener('click', () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'JSON2.json',true);
+    xhr.open('GET', './Assets/JSON2.json',true);
     xhr.onload = () =>{
         if(xhr.status === 200){
             let JSONinfo = JSON.parse(xhr.responseText);
