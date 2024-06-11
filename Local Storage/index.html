@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">Local Storage Example</h1>
+    <div class="form-group">
+        <label for="username">Enter your name:</label>
+        <input type="text" id="username" class="form-control">
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary mr-2" onclick="saveName()">Save Name</button>
+        <button class="btn btn-secondary" onclick="loadName()">Load Name</button>
+    </div>
+    <p id="greeting" class="mt-3 text-center"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
