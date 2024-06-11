@@ -9,31 +9,30 @@
   <link rel="stylesheet" href="SetTimer.css">
 </head>
 <body>
-
-<div class="container">
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="text-center mb-4">Timer</h3>
-        <div class="form-group">
-          <label for="minutes">Minutes:</label>
-          <input type="number" id="minutes" class="form-control" min="0" value="0">
+  <div class="container">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Timer</h3>
+          <div class="form-group">
+            <label for="minutes">Minutes:</label>
+            <input type="number" id="minutes" class="form-control" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label for="seconds">Seconds:</label>
+            <input type="number" id="seconds" class="form-control" min="0" max="59" value="0">
+          </div>
+          <div class="text-center">
+            <button id="startBtn" class="btn btn-primary mr-2" onclick="startTimer()">Start</button>
+            <button id="stopBtn" class="btn btn-danger" onclick="stopTimer()" disabled>Stop</button>
+          </div>
+          <div id="timerDisplay" class="text-center mt-3"></div>
         </div>
-        <div class="form-group">
-          <label for="seconds">Seconds:</label>
-          <input type="number" id="seconds" class="form-control" min="0" max="59" value="0">
-        </div>
-        <div class="text-center">
-          <button id="startBtn" class="btn btn-primary mr-2" onclick="startTimer()">Start</button>
-          <button id="stopBtn" class="btn btn-danger" onclick="stopTimer()" disabled>Stop</button>
-        </div>
-        <div id="timerDisplay" class="text-center mt-3"></div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="SetTimer.js"></script>
+  <script src="SetTimer.js"></script>
 
 </body>
 </html>
