@@ -1,0 +1,40 @@
+*{
+     font-family: "Roboto", sans-serif;
+     margin: 0;
+     padding: 0;
+}
+
+h1{
+     text-align: center;
+     color: coral;
+     margin: 25px;
+}
+
+button{
+     height: 50px;
+     cursor: pointer;
+     width: 15%;
+     transition: all 0.5s;
+     border-radius: 12px;
+     border-style: none;
+     background-color: rgb(66, 66, 255);
+     color: white;
+     font-size: 16px;
+}
+
+button:hover{
+     transform : translateY(-5px)
+}
+
+button:active{
+     transform: scale(0.9);
+}
+
+.gallery{
+     display: flex;
+     margin: auto;
+     /* margin-left:12px ; */
+     justify-content: center;
+     /* overflow: auto; */
+     flex-wrap: wrap;
+}
